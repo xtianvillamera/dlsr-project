@@ -1,0 +1,13 @@
+{% extends "EUReport/base.html" %}
+{% block content %}
+	<div class="row text-left	row-no-gutters">
+		<div class="col-sm-2">
+			<h2>Total Electric Usage</h2>
+			<h3>Semester: 1st Sem</h3>
+		</div>
+	</div>
+	{% for s in deptsinsts %}
+		<h3>{{ s.dept_inst }}</h3>
+		<p>{{ s.total_hours }}</p>
+	{% endfor %}
+{% endblock content %}		

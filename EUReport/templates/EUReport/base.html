@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<title>{{ title }}</title>
+	<style type="text/css">
+	.main {
+		padding: 20px;
+	  	margin-top: 30px;
+	  	height: 1500px; /* Used in this example to enable scrolling */
+	}
+
+	.navbar {
+		background-color: #fc600c;
+	}
+	</style>
+</head>
+<body>
+	<div>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	  	<!--<div class="collapse navbar-collapse" id="navbarCollapse">
+	  	</div>-->
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">DLSR</a>
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		      	<span class="sr-only">Toggle navigation</span>
+		      	<span class="icon-bar"></span>
+		      	<span class="icon-bar"></span>
+		      	<span class="icon-bar"></span>
+		      </button>	
+		    </div>
+		<div class="navbar-collapse collapse">
+		    <ul class="nav navbar-nav">
+		      <li><a href="/Homepage/">Home</a></li>
+		      <li><a href="/Students">Students</a></li>
+		      <li class="active"><a href="/EUReport/">Electric Usage</a></li>
+		    </ul>
+		</div>
+	</nav>
+	</div>
+
+
+	<div class="main">
+		{% block content %}{% endblock %}
+	</div>
+
+	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+</body>
+</html>
