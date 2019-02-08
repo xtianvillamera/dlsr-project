@@ -1,6 +1,6 @@
 <!--MIT License
 
-Copyright (c) 2019 carlomediarito
+Copyright (c) 2019 cjfmediarito
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,9 +25,15 @@ Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science, College 
 University of the Philippines, Diliman for the AY 2018-2019.
 
 Code History:
-- 2/6 made the view of the Name, Student, Degree Program, and Remaining Hours
+- 2/6 - cjfmediarito made the view of the Name, Student, Degree Program, and Remaining Hours
 to be in a grid system
-- 2/6 placed the data in div classes rows and columns
+- 2/6 - cjfmediarito placed the data in div classes rows and columns
+
+File Creation: 2/7
+Development Group: Group 7 DLSR - Digital Library Services and Reservations
+Client Group: CS 192 WFWX, librarians, and Computer Science students
+Purpose of the file: Show data in a grid form of the Student database and be able to
+redirect to a specific Student Account information.
 
 -->
 
@@ -39,6 +45,7 @@ to be in a grid system
   		<input class="form-control" type="text" placeholder="Search..." aria-label="Search">
 	</div>
 
+	<!-- First row containing the attribute names of the table-->
 	<div class="row text-left row-no-gutters">
 		<div class="col-sm-3">
 			<h3>Name</h3>
@@ -54,6 +61,7 @@ to be in a grid system
 		</div>
 	</div>
 
+	<!-- All rows containing data of each student-->
 	{%for s in students %}
 	<div class="row text-left row-no-gutters" id="row-student">
 		<div class="col-sm-3">
