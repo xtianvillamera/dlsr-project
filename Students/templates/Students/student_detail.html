@@ -1,0 +1,23 @@
+{% extends "Students/base.html" %}
+{% block content %}
+	
+	<div class="row text-left	row-no-gutters">
+		<div class="row-sm-2">
+			<h3>Name:</h3> {{ object.last_name }}, {{ object.first_name }}
+		</div>
+		<div class="row-sm-2">
+			<h3>Student Number:</h3>{{ object.student_no }}
+		</div>
+		<div class="row-sm-3">
+			<h3>Degree Program:</h3> {{ object.degree_prog }}
+		</div>
+		<div class="row-sm-4">
+			<h3>Remaining Hours:</h3>{{ object.rem_hours}}
+		</div>
+		<div class="row-sm-5">
+			<h3>Electric Usage: </h3>
+			<p>You already used: {{ object.total_elec_usage }} hours in total</p>
+		</div>	
+	<div>
+	
+{% endblock content %}
