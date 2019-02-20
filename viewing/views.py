@@ -81,3 +81,4 @@ class ElecUsageListView(ListView):
 	template_name = 'viewing/elec_usage.html'
 	context_object_name = 'deg_prog'
 
+	
