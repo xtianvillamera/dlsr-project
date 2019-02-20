@@ -70,13 +70,14 @@ class DegProgStudentList(ListView):
 	
 	
 	def get_queryset(self):
-		self.degree_prog = get_object_or_404(DegreeProg, pk=2)
-		#return Student.objects.all()
+		self.degree_prog = get_object_or_404(DegreeProg, pk=self.kwargs['pk'])
 		return Student.objects.filter( degree_prog = self.degree_prog)
-#def ViewingElecUsage(request):
 
+class StudentDetailView(DetailView):
+	model = Student
 
 class ElecUsageListView(ListView):		
 	model = DegreeProg
 	template_name = 'viewing/elec_usage.html'
+	context_object_name = 'deg_prog'
 

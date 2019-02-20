@@ -50,7 +50,6 @@ redirect to a specific Student Account information.
 	the attribute names of the table--> 
 		<div class="row text-left row-no-gutters"> <div class="col-sm-3"> <h3>Name</h3> </div> 
 		<div class="col-sm-2"> <h3>Student No.</h3> </div> 
-		<div class="col-sm-4"> <h3>Degree Program</h3> </div> 
 		<div class="col-sm-2"> <h3>Remaining Hours</h3> </div>
 	</div>
 
@@ -58,16 +57,13 @@ redirect to a specific Student Account information.
 	{% for s in students %}
 	<div class="row text-left row-no-gutters" id="row-student">
 		<div class="col-sm-3">
-			<a href="#">{{ s.last_name }}, {{ s.first_name }}</a>
+			<a href="{% url 'viewing-StudentDetailView' s.id %}">{{ s.last_name }}, {{ s.first_name }}</a>
 		</div>
 		<div class="col-sm-2">
-			<a href="#">{{ s.student_no }}</a>
-		</div>
-		<div class="col-sm-4">
-			<a href="#">{{ s.degree_prog }}</a>
+			<a href="{% url 'viewing-StudentDetailView' s.id %}">{{ s.student_no }}</a>
 		</div>
 		<div class="col-sm-2">
-			<a href="#">{{ s.rem_hours}}</a>
+			<a href="{% url 'viewing-StudentDetailView' s.id %}">{{ s.rem_hours}}</a>
 		</div>
 	</div>
 	{% endfor %}

@@ -25,30 +25,36 @@ Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science, College 
 University of the Philippines, Diliman for the AY 2018-2019.
 
 Code History:
-- 2/7 - xtianvillamera made the view of the sample data of an Electric Usage Report: showing
-the total number of hours used by a student.
+- 2/7 - xtianvillamera created and modified so that from list of students, it can be redirected
+to this page showing specific student details.
 
 File Creation: 2/7
 Development Group: Group 7 DLSR - Digital Library Services and Reservations
 Client Group: CS 192 WFWX, librarians, and Computer Science students
-Purpose of the file: Show the total number of hours used by students in a specific degree program.
+Purpose of the file: Show account information of a student.
 
 -->
 
 {% extends "viewing/base.html" %}
 {% block content %}
-
-	<div class="row text-left row-no-gutters">
-		<div class="col-sm-3">
-			<h3>Degree Program</h3>
+	
+	<div class="row text-left	row-no-gutters">
+		<div class="row-sm-2">
+			<h3>Name:</h3> {{ object.last_name }}, {{ object.first_name }}
 		</div>
-		<div class="col-sm-2">
-			<h3>Total Electric Usage</h3>
+		<div class="row-sm-2">
+			<h3>Student Number:</h3>{{ object.student_no }}
 		</div>
-	</div>
-
-	{% for dp in deg_prog %}
-		<h5>{{ dp.deg_name }}</h3>
-	{% endfor %}
-
+		<div class="row-sm-3">
+			<h3>Degree Program:</h3> {{ object.degree_prog }}
+		</div>
+		<div class="row-sm-4">
+			<h3>Remaining Hours:</h3>{{ object.rem_hours}}
+		</div>
+		<div class="row-sm-5">
+			<h3>Electric Usage: </h3>
+			<p>You already used: {{ object.total_elec_usage }} hours in total</p>
+		</div>	
+	<div>
+	
 {% endblock content %}
