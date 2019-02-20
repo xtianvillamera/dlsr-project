@@ -43,9 +43,14 @@ from django.views.generic import ListView, DetailView
 from .models import *
 
 # Create your views here.
-
 def Home(request):
 	return render(request, 'viewing/base.html')
+
+def ViewingDegProg(request):
+	context = {
+		'deg_prog': DegreeProg.objects.all(),
+		'students': Student.objects.all()
+	}
 
 class DegProgListView(ListView):
 	model = DegreeProg
@@ -54,18 +59,20 @@ class DegProgListView(ListView):
 	ordering = ['deg_name']
 	
 class DegProgDetailView(DetailView):
-	model = DegreeProg
+	model = Student
 	template_name = 'viewing/list_students.html'
-	context_object_name = 'deg_prog'
+	context_object_name = 'students'
 
 class DegProgStudentList(ListView):
 	template_name = 'viewing/list_students.html'
 	model = DegreeProg
-"""
+	context_object_name = 'students'
+	
+	
 	def get_queryset(self):
-		self.degree_proga = get_object_or_404(DegreeProg)
-		return Student.objects.filter(degree_prog = self.degree_proga)
-	"""
+		self.degree_prog = get_object_or_404(DegreeProg, pk=2)
+		#return Student.objects.all()
+		return Student.objects.filter( degree_prog = self.degree_prog)
 #def ViewingElecUsage(request):
 
 
