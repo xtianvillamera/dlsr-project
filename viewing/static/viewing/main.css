@@ -1,0 +1,21 @@
+.main {
+	padding: 20px;
+	margin-top: 30px;
+	height: 1500px; /* Used in this example to enable scrolling */
+}
+.navbar {
+	background-color: #fc600c;
+}
+.new-color {
+	color: black;
+}
+#navnames {
+		    color: #000000;
+}
+#search-bar {
+	padding: 5px;
+	margin-top: 20px;
+}
+#row-student:hover{
+	background-color: #e0d5ce;
+}
