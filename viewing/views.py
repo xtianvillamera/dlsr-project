@@ -39,7 +39,12 @@ response, so that the project will have a UI.
 
 from django.shortcuts import get_object_or_404,render
 from django.http import HttpResponse
-from django.views.generic import ListView, DetailView
+from django.views.generic import (ListView, 
+	DetailView,
+	CreateView,
+	UpdateView,
+	DeleteView
+	)
 from .models import *
 
 # Create your views here.
@@ -81,4 +86,14 @@ class ElecUsageListView(ListView):
 	template_name = 'viewing/elec_usage.html'
 	context_object_name = 'deg_prog'
 
-	
+class StudentCreateView(CreateView):
+	model = Student
+	fields = ['student_no','last_name', 'first_name','degree_prog' ]
+
+class StudentUpdateView(UpdateView):
+	model = Student
+	fields = ['student_no','last_name', 'first_name','degree_prog' ]
+
+class StudentDeleteView(DeleteView):
+	model = Student
+	success_url = '/viewing/deg_prog/'

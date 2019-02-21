@@ -38,6 +38,8 @@ Purpose of the file: Show account information of a student.
 {% extends "viewing/base.html" %}
 {% block content %}
 	
+	<a class="btn btn-primary" href="{% url 'viewing-StudentUpdateView' object.id %}">Edit info</a>
+	<a class="btn btn-danger" href="{% url 'viewing-StudentDeleteView' object.id %}">Remove</a>
 	<div class="row text-left	row-no-gutters">
 		<div class="row-sm-2">
 			<h3>Name:</h3> {{ object.last_name }}, {{ object.first_name }}

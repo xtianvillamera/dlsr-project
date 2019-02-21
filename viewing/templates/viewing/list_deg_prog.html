@@ -2,10 +2,10 @@
 {% block content %}
 
 	<h1>List of Degree Programs</h1>
+	<a class="btn btn-primary" href="{% url 'viewing-StudentCreate'  %}">Add another student</a>
 
 	{% for deg in deg_prog %}
 		<a href="{% url 'viewing-DegProgStudentList' deg.id %}"> {{ deg.deg_name }} </a>  <br>
-		
 	{% endfor %}	
 
 {% endblock content %}
