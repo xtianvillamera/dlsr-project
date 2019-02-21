@@ -75,11 +75,19 @@ Purpose of the file: Main webpage view for the Students view of the librarian.
 		      <li><a href="{% url 'viewing-ViewingDegProgList' %}">Students</a></li>
 		      <li><a href="{% url 'viewing-ElecUsageListView' %}">Electric Usage</a></li>
 		    </ul>
+		    <ul class="nav navbar-nav navbar-right">
+		    	{% if user.is_authenticated %}
+		    		<li><a href="{% url 'profile' %}">Profile</a></li>
+		    		<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+		    	{% else %}
+      				<li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      			{% endif %}
+      		</ul>	
 		</div>
 	</nav>
 	</div>
+	<!-- Navbar Right Side -->
 
-	<!-- Extends to ListStudents.html -->
 	<div class="main">
 		{% block content %}{% endblock %}
 	</div>
