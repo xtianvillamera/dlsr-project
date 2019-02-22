@@ -55,6 +55,9 @@ class DegreeProg(models.Model):
 	def __str__(self):
 		return self.deg_name
 
+	def get_absolute_url(self):
+		return reverse('viewing-DegProgStudentList', kwargs={'pk':self.pk})	
+
 	class Meta:
 		ordering = ('deg_name',)	
 

@@ -37,7 +37,7 @@ Purpose of the file: Show account information of a student.
 
 {% extends "viewing/base.html" %}
 {% block content %}
-	
+	<a class="btn btn-outline-info" href="{% url 'viewing-DegProgStudentList' object.degree_prog.id %}">Back</a>
 	<a class="btn btn-primary" href="{% url 'viewing-StudentUpdateView' object.id %}">Edit info</a>
 	<a class="btn btn-danger" href="{% url 'viewing-StudentDeleteView' object.id %}">Remove</a>
 	<div class="row text-left	row-no-gutters">
