@@ -142,6 +142,13 @@ class ElecUsageListView(ListView):
 	template_name = 'viewing/elec_usage.html'
 	context_object_name = 'deg_prog'
 
+	print('HANNNAAA')
+
+	def testingonli(self):
+		self.degree_prog = get_object_or_404(DegreeProg, pk=self.kwargs['pk'])
+		query_na = Student.objects.filter( degree_prog = self.degree_prog)
+
+		print(query_na)	
 """
 Model Name: StudentCreateView
 Creation Date: 2/19/19

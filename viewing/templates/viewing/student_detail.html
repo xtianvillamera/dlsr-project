@@ -37,8 +37,14 @@ Purpose of the file: Show account information of a student.
 
 {% extends "viewing/base.html" %}
 {% block content %}
+<<<<<<< HEAD
 	
 	<br>
+=======
+	<a class="btn btn-outline-info" href="{% url 'viewing-DegProgStudentList' object.degree_prog.id %}">Back</a>
+	<a class="btn btn-primary" href="{% url 'viewing-StudentUpdateView' object.id %}">Edit info</a>
+	<a class="btn btn-danger" href="{% url 'viewing-StudentDeleteView' object.id %}">Remove</a>
+>>>>>>> origin/master
 	<div class="row text-left	row-no-gutters">
 		<div class="row-sm-2">
 			<h3 class="stud-detail">Name:</h3> 
