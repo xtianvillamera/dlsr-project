@@ -46,10 +46,13 @@ redirect to a specific Student Account information.
   		<input class="form-control" type="text" placeholder="Search..." aria-label="Search">
 	</div>
 
-	<h3>Degree Program: {{ students.0.degree_prog }}</h3> <!-- First row containing
-	the attribute names of the table--> 
-	<a class="btn btn-primary" href="{% url 'viewing-StudentCreate'  %}">Add another student</a>
-		<div class="row text-left row-no-gutters"> <div class="col-sm-3"> <h3>Name</h3> </div> 
+	<div>
+		<h3>Degree Program: {{ students.0.degree_prog }}</h3> 
+	</div>
+
+	<!-- First row containing the attribute names of the table--> 
+	<div class="row text-left row-no-gutters"> 
+		<div class="col-sm-2"> <h3>Name</h3> </div> 
 		<div class="col-sm-2"> <h3>Student No.</h3> </div> 
 		<div class="col-sm-2"> <h3>Remaining Hours</h3> </div>
 	</div>
@@ -57,7 +60,7 @@ redirect to a specific Student Account information.
 	<!-- All rows containing data of each student-->
 	{% for s in students %}
 	<div class="row text-left row-no-gutters" id="row-student">
-		<div class="col-sm-3">
+		<div class="col-sm-2">
 			<a href="{% url 'viewing-StudentDetailView' s.id %}">{{ s.last_name }}, {{ s.first_name }}</a>
 		</div>
 		<div class="col-sm-2">

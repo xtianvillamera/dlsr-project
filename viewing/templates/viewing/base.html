@@ -50,7 +50,6 @@ Purpose of the file: Main webpage view for the Students view of the librarian.
 	<link rel="stylesheet" type="text/css" href="{% static 'viewing/main.css' %}">
 	<style type="text/css">
 		
-
 	</style>
 </head>
 <body>
@@ -71,7 +70,7 @@ Purpose of the file: Main webpage view for the Students view of the librarian.
 		</div>
 		<div class="navbar-collapse collapse">
 		    <ul class="nav navbar-nav">
-		      <li><a href="{% url 'viewing-Home' %}" class="new-color">Home</a></li>
+		      <li><a href="{% url 'viewing-Home' %}">Home</a></li>
 		      <li><a href="{% url 'viewing-ViewingDegProgList' %}">Students</a></li>
 		      <li><a href="{% url 'viewing-ElecUsageListView' %}">Electric Usage</a></li>
 		    </ul>

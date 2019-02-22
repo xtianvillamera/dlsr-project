@@ -38,25 +38,34 @@ Purpose of the file: Show account information of a student.
 {% extends "viewing/base.html" %}
 {% block content %}
 	
-	<a class="btn btn-primary" href="{% url 'viewing-StudentUpdateView' object.id %}">Edit info</a>
-	<a class="btn btn-danger" href="{% url 'viewing-StudentDeleteView' object.id %}">Remove</a>
+	<br>
 	<div class="row text-left	row-no-gutters">
 		<div class="row-sm-2">
-			<h3>Name:</h3> {{ object.last_name }}, {{ object.first_name }}
+			<h3 class="stud-detail">Name:</h3> 
+			<p class="stud-detail">{{ object.last_name }}, {{ object.first_name }}</p>
 		</div>
 		<div class="row-sm-2">
-			<h3>Student Number:</h3>{{ object.student_no }}
+			<h3 class="stud-detail">Student Number:</h3>
+			<p class="stud-detail">{{ object.student_no }}</p>
 		</div>
 		<div class="row-sm-3">
-			<h3>Degree Program:</h3> {{ object.degree_prog }}
+			<h3 class="stud-detail">Degree Program:</h3> 
+			<p class="stud-detail">{{ object.degree_prog }}</p>
 		</div>
 		<div class="row-sm-4">
-			<h3>Remaining Hours:</h3>{{ object.rem_hours}}
+			<h3 class="stud-detail">Remaining Hours:</h3>
+			<p class="stud-detail">{{ object.rem_hours}}</p>
 		</div>
 		<div class="row-sm-5">
-			<h3>Electric Usage: </h3>
-			<p>You already used: {{ object.total_elec_usage }} hours in total</p>
+			<h3 class="stud-detail">Electric Usage: </h3>
+			<p class="stud-detail">You already used: {{ object.total_elec_usage }} hours in total</p>
 		</div>	
-	<div>
+	</div>
+
+	<div class="list-degprog-centerize">
+		<br><br>
+		<a style="text-decoration: none" class="button button2" href="{% url 'viewing-StudentUpdateView' object.id %}">Edit info</a>
+		<a style="text-decoration: none" class="button button3" href="{% url 'viewing-StudentDeleteView' object.id %}">Remove</a>
+	</div>
 	
 {% endblock content %}

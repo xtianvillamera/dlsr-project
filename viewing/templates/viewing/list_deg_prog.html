@@ -1,11 +1,17 @@
 {% extends "viewing/base.html" %}
 {% block content %}
 
-	<h1>List of Degree Programs</h1>
-	<a class="btn btn-primary" href="{% url 'viewing-StudentCreate'  %}">Add another student</a>
+	<div class="list-degprog-centerize">
+		<h1>List of Degree Programs</h1>
+		<a style="text-decoration: none" class="button button1" href="{% url 'viewing-StudentCreate'  %}">Add a student</a>
+		<br><br>
 
-	{% for deg in deg_prog %}
-		<a href="{% url 'viewing-DegProgStudentList' deg.id %}"> {{ deg.deg_name }} </a>  <br>
-	{% endfor %}	
+		<div>
+		{% for deg in deg_prog %}
+			<a href="{% url 'viewing-DegProgStudentList' deg.id %}"> {{ deg.deg_name }} </a>  <br>
+		{% endfor %}	
+		</div>
+
+	</div>
 
 {% endblock content %}
