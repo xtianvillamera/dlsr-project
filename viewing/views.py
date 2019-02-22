@@ -137,6 +137,8 @@ List of files/database tables: DegreeProg
 Return Value: Webpage (generic view) containing the electric usage per
 degree program in the UPD College of Engineering
 """
+
+
 class ElecUsageListView(ListView):		
 	model = DegreeProg
 	template_name = 'viewing/elec_usage.html'
@@ -145,6 +147,7 @@ class ElecUsageListView(ListView):
 	print('HANNNAAA')
 
 	def testingonli(self):
+		print('HEHE')
 		self.degree_prog = get_object_or_404(DegreeProg, pk=self.kwargs['pk'])
 		query_na = Student.objects.filter( degree_prog = self.degree_prog)
 
