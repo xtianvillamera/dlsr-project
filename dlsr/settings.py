@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'viewing.apps.ViewingConfig',
     'users.apps.UsersConfig',
+    'digital_pinkcard.apps.DigitalPinkcardConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -47,8 +47,10 @@ Purpose of the file: Show the total number of hours used by students in a specif
 		</div>
 	</div>
 
-	{% for dp in deg_prog %}
-		<h5>{{ dp.deg_name }}</h3>
+	{% for dp, hours in elec_usage_data %}
+		<h5>{{ dp }} {{ hours }}</h3>
 	{% endfor %}
+	
+
 
 {% endblock content %}

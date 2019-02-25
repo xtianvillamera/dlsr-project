@@ -141,13 +141,29 @@ Return Value: Webpage (generic view) containing the electric usage per
 degree program in the UPD College of Engineering
 """
 
+def DisplayElecUsage(request):
+
+	deg_prog = DegreeProg.objects.all()
+	students = Student.objects.all()
+
+	no_hours = []	
+	for dp in deg_prog:
+		no_elec_usage = 0.0
+		for stud in students:
+			if stud.degree_prog == dp:
+				no_elec_usage = no_elec_usage + float(stud.total_elec_usage)
+		no_hours.append(no_elec_usage)		
+	
+	context = {
+				'elec_usage_data': zip(deg_prog,no_hours)
+	}
+		
+	return render(request, 'viewing/elec_usage.html', context)
 
 class ElecUsageListView(ListView):		
 	model = DegreeProg
 	template_name = 'viewing/elec_usage.html'
 	context_object_name = 'deg_prog'
-
-	print('HANNNAAA')
 
 	def testingonli(self):
 		print('HEHE')
