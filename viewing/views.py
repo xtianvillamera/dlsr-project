@@ -49,6 +49,8 @@ from django.views.generic import (ListView,
 	DeleteView
 	)
 from .models import *
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 """
@@ -71,6 +73,7 @@ List of files/database tables: Student model
 Return value: It will return the webpage containing the list of 
 degree programs.
 """
+@login_required
 def ViewingDegProg(request):
 	context = {
 		'deg_prog': DegreeProg.objects.all(),
@@ -194,3 +197,4 @@ database
 class StudentDeleteView(DeleteView):
 	model = Student
 	success_url = '/viewing/deg_prog/'
+	print('DELETED HEHE')
