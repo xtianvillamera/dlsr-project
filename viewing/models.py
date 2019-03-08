@@ -38,6 +38,8 @@ response, so that the project will have a UI.
 
 from django.db import models
 from django.urls import reverse
+from django import forms
+import string, random
 
 # Create your models here.
 
@@ -69,6 +71,12 @@ List of Calling Arguments: models.Model
 List of files/database tables: -----
 Return value: the model itself
 """
+
+def randomString(stringLength=10):
+    """Generate a random string of fixed length """
+    letters = string.ascii_lowercase
+    return ''.join(random.choice(letters) for i in range(stringLength))
+
 class Student(models.Model):
 	last_name = models.CharField(max_length = 30)
 	first_name = models.CharField(max_length = 30)
@@ -76,6 +84,7 @@ class Student(models.Model):
 	student_no = models.IntegerField()
 	rem_hours = models.DecimalField(decimal_places=2,max_digits=1000,default=20.0)
 	total_elec_usage = models.DecimalField(decimal_places=2,max_digits=1000,default=0)
+	pword = models.CharField(max_length = 30, default=randomString(10))
 
 	def __str__(self):
 		return self.last_name
