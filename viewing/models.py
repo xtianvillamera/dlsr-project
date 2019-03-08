@@ -28,6 +28,7 @@ Diliman for the AY 2018-2019”
 
 Code History:
 - 2/6/19 - xtianvillamera added models DegreeProg, Student, Semester
+- 3/8/19 - xtianvillamera added pword on the model Student
 
 File Creation: 2/6/19
 Development Group: Group 7 - DLSR: Digital Library Services and Reservation 
