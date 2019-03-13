@@ -70,8 +70,8 @@ Return Value: Webpage (generic view) containing the info/details of
 an engineering student
 """
 class UserDetailView(DetailView):
-	model = Student.objects.all()
-
+	template_name = 'digital_pinkcard/student_detail.html'
+	model = Student
 """
 Model Name: LogIn
 Creation Date: 3/6/19
@@ -105,7 +105,7 @@ class LogIn(TemplateView):
 				print(type(student))	
 				finding_student = True
 				print(student.id,'hanna')
-				return HttpResponseRedirect('/viewing/student/%s/' % student.id)
+				return HttpResponseRedirect('/pinkcard/student/%s/' % student.id)
 				
 
 		if (finding_student == False):

@@ -54,5 +54,5 @@ Return value: ----
 urlpatterns = [
 	path('', views.testing),
 	path('login/', LogIn.as_view(), name='pinkcard-LogIn'),
-	path('user/<int:pk>/', UserDetailView.as_view(), name='pinkcard-UserDetailView'),
+	path('student/<int:pk>/', UserDetailView.as_view(), name='pinkcard-UserDetailView'),
 ]

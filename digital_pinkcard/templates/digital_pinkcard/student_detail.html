@@ -1,0 +1,26 @@
+{% extends "digital_pinkcard/base.html" %}
+{% block content %}
+	<br>
+	<div class="row text-left	row-no-gutters">
+		<div class="row-sm-2">
+			<h3 class="stud-detail">Name:</h3> 
+			<p class="stud-detail">{{ object.last_name }}, {{ object.first_name }}</p>
+		</div>
+		<div class="row-sm-2">
+			<h3 class="stud-detail">Student Number:</h3>
+			<p class="stud-detail">{{ object.student_no }}</p>
+		</div>
+		<div class="row-sm-3">
+			<h3 class="stud-detail">Degree Program:</h3> 
+			<p class="stud-detail">{{ object.degree_prog }}</p>
+		</div>
+		<div class="row-sm-4">
+			<h3 class="stud-detail">Remaining Hours:</h3>
+			<p class="stud-detail">{{ object.rem_hours}}</p>
+		</div>
+		<div class="row-sm-5">
+			<h3 class="stud-detail">Electric Usage: </h3>
+			<p class="stud-detail">You already used: {{ object.total_elec_usage }} hours in total</p>
+		</div>	
+	</div>
+{% endblock content %}
