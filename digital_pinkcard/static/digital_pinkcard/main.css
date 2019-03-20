@@ -1,7 +1,45 @@
+/*MIT License
+
+Copyright (c) 2019 carlomediarito
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+This is a course requirement for CS 192 Software Engineering II under the supervision of 
+Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science, College of Engineering, 
+University of the Philippines, Diliman for the AY 2018-2019.
+
+Code History:
+- 2/20 - xtianvillamera created file
+- 2/21 - cjfmediarito tried to change font
+- 2/21 - cjfmediarito centered plenty of div elements
+- 2/21 - cjfmediarito modified the buttons
+
+File Creation: 2/20
+Development Group: Group 7 DLSR - Digital Library Services and Reservations
+Client Group: CS 192 WFWX, librarians, and Computer Science students
+Purpose of the file: CSS file to apply styles on different elements of different html files.
+*/
+
 .main {
-	padding: 20px;
-	margin-top: 30px;
-	height: 1500px; /* Used in this example to enable scrolling */
+    padding: 20px;
+    margin-top: 30px;
+    height: 1500px; /* Used in this example to enable scrolling */
 }
 
 @font-face {
@@ -17,5 +55,126 @@
 }
 
 .navbar {
-	background-color: #fc600c;
+    background-color: #fc600c;
+}
+#navnames {
+    color: #000000;
+}
+
+.menu-container {
+    position: relative;
+    margin: 0 auto;
+    margin-top: 0px;
+    margin-top: -5px;
+    max-width: 980px;
+    padding: 0 50px;
+}
+
+#navbar-brand {
+    padding: 14px 100px;
+}
+
+.nav.navbar-nav li a {
+    color: black;
+    font-family: OswaldRegular;
+}
+
+.navbar-header.navbar-brand a{
+    color: black;
+}
+
+#search-bar {
+    padding: 5px;
+    margin-top: 20px;
+}
+#row-student:hover{
+    background-color: #e0d5ce;
+}
+
+.button {
+    background-color: #fc600c; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #fc600c;
+}
+
+.button1:hover {
+    background-color: #fc600c;
+    color: black;
+}
+
+.button2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+}
+
+.button2:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+.button3 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #f44336;
+}
+
+.button3:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+.list-degprog-centerize{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.content-section{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+    font-family: OswaldRegular;
+}
+
+h3{
+    font-family: OswaldRegular;
+}
+
+h3.stud-detail{
+    text-align: center;
+    font-family: OswaldRegular;
+    font-size: 20pt;
+}
+
+p.stud-detail{
+    text-align: center;
+    font-family: OswaldRegular;
+}
+
+a{
+    text-decoration: none;
+}   
+
+li{
+    color: black;
 }
