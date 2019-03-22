@@ -30,6 +30,7 @@ Code History:
 - 3/6/19 - xtianvillamera created the file
 - 3/6/19 - xtianvillamera added the classes UserDetailView, LogIn
 - 3/8/19 - xtianvillamera edited the class LogIn (added the functions get and post)
+- 3/21/19 -xtianvillamera added the functions: Map, UseMap and AfterUseMap
 
 File Creation: 3/6/19
 Development Group: Group 7 - DLSR: Digital Library Services and Reservation 
