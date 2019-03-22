@@ -114,15 +114,40 @@ class LogIn(TemplateView):
 				return HttpResponseRedirect('/pinkcard/student/%s/' % student.id)
 		return render(request, self.template_name, args)
 
-		
+"""
+Method Name: Map
+Creation Date: 3/21/19
+Purpose: Map will display the outlets on the libraries in Engg Lib 2
+List of Calling Arguments: request
+List of files/database tables: Student
+Return Value: A webpage displaying the map of outlets.
+"""			
 def Map(request):
 	return render(request, 'digital_pinkcard/map.html')
 
+"""
+Method Name: UseMap
+Creation Date: 3/21/19
+Purpose: Map will display the outlets on the libraries in Engg Lib 2 and
+a clock, displaying the time the student has been consuming
+List of Calling Arguments: request
+List of files/database tables: Student
+Return Value: A webpage displaying the map of outlets.
+"""	
 def UseMap(request):
 	begin = time.time()
 	request.session['begin'] = begin
 	return render(request, 'digital_pinkcard/usemap.html')
 
+"""
+Method Name: AfterUseMap
+Creation Date: 3/21/19
+Purpose: Map will display the outlets on the libraries in Engg Lib 2 and the
+total time that the student consumed while using the outlet.
+List of Calling Arguments: request
+List of files/database tables: Student
+Return Value: A webpage displaying the map of outlets.
+"""	
 def AfterUseMap(request):
 	end = decimal.Decimal(time.time())
 	duration = decimal.Decimal(end - decimal.Decimal(request.session.get('begin')))
