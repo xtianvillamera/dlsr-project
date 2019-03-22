@@ -54,5 +54,9 @@ Return value: ----
 urlpatterns = [
 	path('', views.testing),
 	path('login/', LogIn.as_view(), name='pinkcard-LogIn'),
+	path('login_fail/', LogIn.as_view(), name='pinkcard-LogInFail'),
 	path('student/<int:pk>/', UserDetailView.as_view(), name='pinkcard-UserDetailView'),
+	path('map/',views.Map, name='pinkcard-map'),
+	path('map/use', views.UseMap, name='pinkcard-usemap'),
+	path('map/afteruse', views.AfterUseMap, name='pinkcard-afterusemap'),
 ]

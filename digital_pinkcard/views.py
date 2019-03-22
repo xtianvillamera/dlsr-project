@@ -43,8 +43,11 @@ from django.views.generic import TemplateView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import DetailView
 from digital_pinkcard.forms import LogInForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.sessions.middleware import SessionMiddleware
 from viewing.models import *
-
+import decimal 
+import time
 """
 Method Name: testing
 Creation Date: 3/6/19
@@ -72,6 +75,7 @@ an engineering student
 class UserDetailView(DetailView):
 	template_name = 'digital_pinkcard/student_detail.html'
 	model = Student
+	context_object_name = 'students'
 """
 Model Name: LogIn
 Creation Date: 3/6/19
@@ -91,24 +95,44 @@ class LogIn(TemplateView):
 		return render(request, self.template_name, {'form':form})
 
 	def post(self, request):
+		print('post')
 		form = LogInForm(request.POST)
 		if form.is_valid():
 			student_number = form.cleaned_data['student_number']
 			password = form.cleaned_data['password']
 
 		args = {'form':form, 'student_number': student_number, 'password': password}
+		#args['finding_student'] = False
+		args['login_attemp'] = 0
 		database = Student.objects.all()
 
 		finding_student = False
 		for student in database:
-			if (student.student_no == args['student_number'] and student.pword == args['password']):
-				print(type(student))	
+			args['login_attemp'] += 1
+			if (student.student_no == args['student_number'] and student.pword == args['password']):	
 				finding_student = True
-				print(student.id,'hanna')
 				return HttpResponseRedirect('/pinkcard/student/%s/' % student.id)
-				
-
-		if (finding_student == False):
-			print('Wrong password')		
-
 		return render(request, self.template_name, args)
+
+		
+def Map(request):
+	return render(request, 'digital_pinkcard/map.html')
+
+def UseMap(request):
+	begin = time.time()
+	request.session['begin'] = begin
+	return render(request, 'digital_pinkcard/usemap.html')
+
+def AfterUseMap(request):
+	end = decimal.Decimal(time.time())
+	duration = decimal.Decimal(end - decimal.Decimal(request.session.get('begin')))
+	x = Student.objects.filter(id=44)[0].rem_hours - (duration/(decimal.Decimal(60.0)))
+	Student.objects.filter(id=44).update(rem_hours=x)
+	x = Student.objects.filter(id=44)[0].total_elec_usage + (duration/decimal.Decimal(60.0))
+	Student.objects.filter(id=44).update(total_elec_usage=x) 
+	print(Student.objects.filter(id=44)[0].rem_hours)
+	print(Student.objects.filter(id=44)[0].total_elec_usage)	
+	context = {}
+	context['duration'] = duration
+	return render(request, 'digital_pinkcard/afterusemap.html', context)
+		
