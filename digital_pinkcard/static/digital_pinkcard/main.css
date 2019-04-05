@@ -25,12 +25,12 @@ Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science, College 
 University of the Philippines, Diliman for the AY 2018-2019.
 
 Code History:
-- 2/20 - xtianvillamera created file
-- 2/21 - cjfmediarito tried to change font
-- 2/21 - cjfmediarito centered plenty of div elements
-- 2/21 - cjfmediarito modified the buttons
+- 3/22 - xtianvillamera created file
+- 3/22 - cjfmediarito tried to change font
+- 3/22 - cjfmediarito centered plenty of div elements
+- 3/22 - cjfmediarito modified the buttons
 
-File Creation: 2/20
+File Creation: 3/22
 Development Group: Group 7 DLSR - Digital Library Services and Reservations
 Client Group: CS 192 WFWX, librarians, and Computer Science students
 Purpose of the file: CSS file to apply styles on different elements of different html files.
@@ -57,6 +57,7 @@ Purpose of the file: CSS file to apply styles on different elements of different
 .navbar {
     background-color: #fc600c;
 }
+
 #navnames {
     color: #000000;
 }
@@ -68,6 +69,29 @@ Purpose of the file: CSS file to apply styles on different elements of different
     margin-top: -5px;
     max-width: 980px;
     padding: 0 50px;
+}
+
+.outlets {
+    position: relative;
+    margin: 0 auto;
+    margin-top: 0px;
+    margin-top: -5px;
+    max-width: 590px;
+    padding: 0 50px;   
+}
+
+.outlets2 {
+    position: absolute;
+    margin: 0 auto;
+    margin-top: 0px;
+    margin-top: -5px;
+    max-width: 690px;
+    right: 400px;
+    padding: 10px 30px;   
+}
+
+#outlets2-1{
+    padding: -10px;
 }
 
 #navbar-brand {
@@ -91,52 +115,25 @@ Purpose of the file: CSS file to apply styles on different elements of different
     background-color: #e0d5ce;
 }
 
-.button {
-    background-color: #fc600c; /* Green */
-    border: none;
-    color: white;
-    padding: 10px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    cursor: pointer;
-}
-
 .button1 {
-    background-color: white; 
-    color: black; 
-    border: 2px solid #fc600c;
+  padding: 5px 15px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
 }
 
-.button1:hover {
-    background-color: #fc600c;
-    color: black;
-}
+.button1:hover {background-color: #3e8e41}
 
-.button2 {
-    background-color: white; 
-    color: black; 
-    border: 2px solid #008CBA;
-}
-
-.button2:hover {
-    background-color: #008CBA;
-    color: white;
-}
-
-.button3 {
-    background-color: white; 
-    color: black; 
-    border: 2px solid #f44336;
-}
-
-.button3:hover {
-    background-color: #f44336;
-    color: white;
+.button1:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 .list-degprog-centerize{
