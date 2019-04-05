@@ -168,7 +168,7 @@ def Transfer(request):
 id_num = 0
 
 """
-Method Name: Transfer
+Method Name: TransferHours
 Creation Date: 3/21/19
 Purpose: Will prompt the user to enter the student number of the
 student he/she wants to transfer his/her pinkcard hours.
