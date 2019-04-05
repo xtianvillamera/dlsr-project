@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+	<br>
+	<br>	
+	<br>
+	<br>
+	<br>
+	<br>
+	
+	<h2>Transfer Hours</h2>
+	{{ first_name }}
+
+	<form method="GET" action='/students/transfer/transferringhours/'>
+		<input type="number" name="hours" placeholder="Hours">
+	</form>	
+{% endblock content %}

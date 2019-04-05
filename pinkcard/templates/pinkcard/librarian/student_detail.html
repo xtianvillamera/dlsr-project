@@ -1,0 +1,79 @@
+<!--MIT License
+
+Copyright (c) 2019 carlomediarito
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+This is a course requirement for CS 192 Software Engineering II under the supervision of 
+Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science, College of Engineering, 
+University of the Philippines, Diliman for the AY 2018-2019.
+
+Code History:
+- 2/7 - xtianvillamera created and modified so that from list of students, it can be redirected
+to this page showing specific student details.
+- 2/21 - cjfmediarito changed button designs and centered all elements.
+
+File Creation: 2/7
+Development Group: Group 7 DLSR - Digital Library Services and Reservations
+Client Group: CS 192 WFWX, librarians, and Computer Science students
+Purpose of the file: Show account information of a student.
+
+-->
+
+{% extends 'base.html' %}
+{% block content %}
+	<br>
+
+	<a class="btn btn-outline-info" href="{% url 'viewing-DegProgStudentList' object.degree_prog.id %}">Back</a>
+
+	<div class="row text-left	row-no-gutters">
+
+	<br>
+	<a class="btn btn-outline-info" href="{% url 'viewing-DegProgStudentList' object.degree_prog.id %}">Back</a>
+	<a class="btn btn-primary" href="{% url 'viewing-StudentUpdateView' object.id %}">Edit info</a>
+	<a class="btn btn-danger" href="{% url 'viewing-StudentDeleteView' object.id %}">Remove</a>
+	<div class="row text-left row-no-gutters">
+		<div class="row-sm-2">
+			<h3 class="stud-detail">Name:</h3> 
+			<p class="stud-detail">{{ object.last_name }}, {{ object.first_name }}</p>
+		</div>
+		<div class="row-sm-2">
+			<h3 class="stud-detail">Student Number:</h3>
+			<p class="stud-detail">{{ object.id_no }}</p>
+		</div>
+		<div class="row-sm-3">
+			<h3 class="stud-detail">Degree Program:</h3> 
+			<p class="stud-detail">{{ object.degree_prog }}</p>
+		</div>
+		<div class="row-sm-4">
+			<h3 class="stud-detail">Remaining Hours:</h3>
+			<p class="stud-detail">{{ object.rem_hours}}</p>
+		</div>
+		<div class="row-sm-5">
+			<h3 class="stud-detail">Electric Usage: </h3>
+			<p class="stud-detail">You already used: {{ object.total_elec_usage }} hours in total</p>
+		</div>	
+	</div>
+
+	<div class="list-degprog-centerize">
+		<br><br>
+		<a style="text-decoration: none" class="button button2" href="{% url 'viewing-StudentUpdateView' object.id %}">Edit info</a>
+		<a style="text-decoration: none" class="button button3" href="{% url 'viewing-StudentDeleteView' object.id %}">Remove</a>
+	</div>
+{% endblock content %}

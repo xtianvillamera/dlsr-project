@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+	<br>
+	<br>	
+	<br>
+	<br>
+	<br>
+	<br>
+	
+	<h2>Transfer Hours</h2>
+	<form method="GET" action='/students/transfer/transferhours/' href="{ url 'students:transferringhours' }">
+		<input type="text" name="student" placeholder="Search">
+	</form>
+
+	{{first_name}} {{last_name}} {{degree_prog}}
+	<br>
+	{{continue}}
+	<a href="{% url 'students:transferringhours' %}">Continue</a>
+
+{% endblock content %}

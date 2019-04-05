@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h2>Welcome to DLSR!</h2>
+	<p class="lead">
+		Already have an account, go ahead and <a href="{% url 'login' %}">log in</a>
+		<br>
+		New to DLSR? Then get started by creating a <a href="{% url 'student_signup' %}">student account</a> or <a href="{% url 'librarian_signup' %}">teacher account</a>
+		<hr>
+		<h3>What is DLSR?</h3>
+		<p>
+			DLSR, or Digital Library Services and Reservation, is blahblah.
+		</p>
+	</p>	
+{% endblock %}
