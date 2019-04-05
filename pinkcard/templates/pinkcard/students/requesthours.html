@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+	<br>
+	<br>	
+	<br>
+	<br>
+	<br>
+	<br>
+	
+
+	<h2>Request Hours</h2>
+	<form method="GET" action='/students/transfer/transferhours/' href="{ url 'students:transferringhours' }">
+		<input type="text" name="student" placeholder="Student no.">
+	</form>
+	<form method="GET" action='/students/transfer/requesthours/' href="{ url 'students:transferringhours' }">
+		<input type="text" name="number" placeholder="Number">
+	</form>
+
+	{{text}}
+
+{% endblock content %}
