@@ -1,3 +1,55 @@
+"""
+MIT License
+
+Copyright (c) 2019 xtianvillamera
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+This is a course requirement for CS 192 Software Engineering II under 
+the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of 
+Computer Science, College of Engineering, University of the Philippines, 
+Diliman for the AY 2018-2019”
+
+Code History:
+- 3/6/19 - xtianvillamera created the file
+- 3/6/19 - xtianvillamera added the classes UserDetailView, LogIn
+- 3/8/19 - xtianvillamera edited the class LogIn (added the functions get and post)
+- 3/21/19 -xtianvillamera added the functions: Map, UseMap and AfterUseMap
+
+File Creation: 3/6/19
+Development Group: Group 7 - DLSR: Digital Library Services and Reservation 
+Client Group: CS 192 WFWX, Librarians, and Computer Science Students
+Purpose of the File: the purpose of the views.py is to return a web 
+response, so that the project will have a UI. 
+"""
+
+
+from django.shortcuts import render, redirect
+from django.views.generic import TemplateView
+from django.http import HttpResponse, HttpResponseRedirect
+from django.views.generic import DetailView
+from digital_pinkcard.forms import LogInForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.sessions.middleware import SessionMiddleware
+from viewing.models import *
+import decimal 
+import time
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
@@ -12,6 +64,19 @@ import time
 from ..models import *
 from ..forms import *
 
+"""
+Model Name: StudentSignUpView 
+Creation Date: 3/6/19
+Purpose: Using the DetailView as its generic view, UserDetailView displays
+all of the information/detail (name, student no, remaining pink card hours, elec usage) 
+of an engineering student in UPD. Take note that the purpose of this model
+is almost the same with the model StudentDetailView in viewing app, without
+other functions
+List of Calling Arguments: DetailView
+List of files/database tables: Student
+Return Value: Webpage (generic view) containing the info/details of 
+an engineering student
+"""
 class StudentSignUpView(CreateView):
 	model = User
 	form_class = StudentSignUpForm
@@ -30,12 +95,37 @@ class StudentsDetailView(DetailView):
 	model = Student
 	context_object_name = 'students'
 
+"""
+Method Name: test
+Creation Date: 3/6/19
+Purpose: For testing purpose only
+List of Calling Arguments: request
+List of files/database tables: none
+Return value: It will return a blank webpage (temporarily)
+"""
 def Test(request):
 	return render(request, 'pinkcard/students/map.html')
 
+"""
+Method Name: Map
+Creation Date: 3/21/19
+Purpose: Map will display the outlets on the libraries in Engg Lib 2
+List of Calling Arguments: request
+List of files/database tables: Student
+Return Value: A webpage displaying the map of outlets.
+"""	
 def Map(request):
 	return render(request, 'pinkcard/students/map.html')
 
+"""
+Method Name: UseMap
+Creation Date: 3/21/19
+Purpose: Map will display the outlets on the libraries in Engg Lib 2 and
+a clock, displaying the time the student has been consuming
+List of Calling Arguments: request
+List of files/database tables: Student
+Return Value: A webpage displaying the map of outlets.
+"""	
 def UseMap(request):
 	if (request.user.student.rem_hours <= 0):
 		return render(request, 'pinkcard/students/map.html')
@@ -43,6 +133,15 @@ def UseMap(request):
 	request.session['begin'] = begin
 	return render(request, 'pinkcard/students/usemap.html')
 
+"""
+Method Name: AfterUseMap
+Creation Date: 3/21/19
+Purpose: Map will display the outlets on the libraries in Engg Lib 2 and the
+total time that the student consumed while using the outlet.
+List of Calling Arguments: request
+List of files/database tables: Student
+Return Value: A webpage displaying the map of outlets.
+"""	
 def AfterUseMap(request):
 	end = decimal.Decimal(time.time())
 	duration = decimal.Decimal(end - decimal.Decimal(request.session.get('begin')))
@@ -53,11 +152,30 @@ def AfterUseMap(request):
 	context = {}
 	context['duration'] = duration
 	return render(request, 'pinkcard/students/afterusemap.html',context)
- 
+
+
+"""
+Method Name: Transfer
+Creation Date: 4/4/19
+Purpose: It includes transferring and requesting of pinkcard hours
+List of Calling Arguments: request
+List of files/database tables: Student
+Return Value: A webpage displaying the map of outlets.
+"""
 def Transfer(request):
 	return render(request, 'pinkcard/students/transfer.html')
 
 id_num = 0
+
+"""
+Method Name: Transfer
+Creation Date: 3/21/19
+Purpose: Will prompt the user to enter the student number of the
+student he/she wants to transfer his/her pinkcard hours.
+List of Calling Arguments: request
+List of files/database tables: Student
+Return Value: A webpage displaying the map of outlets.
+"""
 def TransferHours(request):
 	query = request.GET.get('student', None)
 	qs = Student.objects.all()
@@ -72,6 +190,14 @@ def TransferHours(request):
 	template = 'pinkcard/students/transferhours.html'
 	return render(request, template, context)
 
+"""
+Method Name: TransferringHours
+Creation Date: 3/21/19
+Purpose: Will now transfer the pinkcard hours to others.
+List of Calling Arguments: request
+List of files/database tables: Student
+Return Value: A webpage displaying the map of outlets.
+"""
 def TransferringHours(request):	
 	t_hours = request.GET.get('hours')
 	if t_hours is not None:
@@ -93,6 +219,14 @@ def TransferringHours(request):
 	template = 'pinkcard/students/transferringhours.html'
 	return render(request, template,context)	
 
+"""
+Method Name: RequestHours
+Creation Date: 3/21/19
+Purpose: Will request hours
+List of Calling Arguments: request
+List of files/database tables: Student
+Return Value: A webpage displaying the map of outlets.
+"""
 def RequestHours(request):
 	t_hours = request.GET.get('number')
 	if t_hours is not None:
