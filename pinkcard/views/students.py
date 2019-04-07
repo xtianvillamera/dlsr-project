@@ -38,18 +38,6 @@ Client Group: CS 192 WFWX, Librarians, and Computer Science Students
 Purpose of the File: the purpose of the views.py is to return a web 
 response, so that the project will have a UI. 
 """
-
-
-from django.shortcuts import render, redirect
-from django.views.generic import TemplateView
-from django.http import HttpResponse, HttpResponseRedirect
-from django.views.generic import DetailView
-from digital_pinkcard.forms import LogInForm
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.sessions.middleware import SessionMiddleware
-from viewing.models import *
-import decimal 
-import time
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
