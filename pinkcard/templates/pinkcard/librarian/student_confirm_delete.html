@@ -48,7 +48,7 @@ Purpose of the file: To confirm if the student record is to be deleted or not.
 			</fieldset>
 			<div class="form-group">
 				<button class="btn btn-danger" type="submit">Yes, Remove</button>
-				<a class="btn btn-outline-secondary" href="{% url 'viewing-StudentDetailView' object.id %}">Cancel</a>
+				<a class="btn btn-outline-secondary" href="{% url 'librarian:StudentDetailView' object.id %}">Cancel</a>
 			</div>
 		</form>
 	</div>	

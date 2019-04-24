@@ -58,17 +58,18 @@ redirect to a specific Student Account information.
 		<div class="col-sm-2"> <h3>Remaining Hours</h3> </div>
 	</div>
 
+	
 	<!-- All rows containing data of each student-->
 	{% for s in students %}
 	<div class="row text-left row-no-gutters" id="row-student">
 		<div class="col-sm-2">
-			<a href="{% url 'viewing-StudentDetailView' s.id %}">{{ s.last_name }}, {{ s.first_name }}</a>
+			<a href="#">{{ s.last_name }}, {{ s.first_name }}</a>
 		</div>
 		<div class="col-sm-2">
-			<a href="{% url 'viewing-StudentDetailView' s.id %}">{{ s.id_no }}</a>
+			<a href="#">{{ s.id_no }}</a>
 		</div>
 		<div class="col-sm-2">
-			<a href="{% url 'viewing-StudentDetailView' s.id %}">{{ s.rem_hours}}</a>
+			<a href="#">{{ s.rem_hours}}</a>
 		</div>
 	</div>
 	{% endfor %}

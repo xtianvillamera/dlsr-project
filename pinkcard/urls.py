@@ -14,6 +14,7 @@ urlpatterns = [
     path('students/', include(([
         path('', students.Test, name='test'),
         path('map/',students.Map, name='map'),
+        #path('you/', students.StudentsDetailView.as_view(), name='detail'),
         path('map/use',students.UseMap, name='usemap'),
         path('map/afteruse', students.AfterUseMap, name='afterusemap'),
         path('transfer/', students.Transfer, name='transfer'),
@@ -26,7 +27,7 @@ urlpatterns = [
         path('', librarian.Home, name='home'),
         path('deg_prog/', librarian.DegProgListView.as_view(), name="ViewingDegProgList"),
         path('deg_prog/<int:pk>/', librarian.DegProgStudentList.as_view(), name="DegProgStudentList"),
-		path('elec_usage/', librarian.DisplayElecUsage, name="viewing-ElecUsageListView"),
+		path('elec_usage/', librarian.DisplayElecUsage, name="ElecUsageListView"),
 		path('student/<int:pk>/', librarian.StudentDetailView.as_view(), name='StudentDetailView'),
 		path('student/<int:pk>/update/', librarian.StudentUpdateView.as_view(), name='StudentUpdateView'),
 		path('student/<int:pk>/delete/',librarian.StudentDeleteView.as_view(), name='StudentDeleteView'),

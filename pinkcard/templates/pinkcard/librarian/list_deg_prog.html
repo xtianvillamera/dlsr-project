@@ -39,12 +39,12 @@ Purpose of the file: List down all departments and degree programs for the libra
 {% block content %}
 	<div class="list-degprog-centerize">
 		<h1>List of Degree Programs</h1>
-		<a style="text-decoration: none" class="button button1" href="{% url 'viewing-StudentCreate'  %}">Add a student</a>
+		
 		<br><br>
 
 		<div>
 		{% for deg in deg_prog %}
-			<a href="{% url 'viewing-DegProgStudentList' deg.id %}"> {{ deg.deg_name }} </a>  <br>
+			<a href="{% url 'librarian:DegProgStudentList' deg.id %}"> {{ deg.deg_name }} </a>  <br>
 		{% endfor %}	
 		</div>
 

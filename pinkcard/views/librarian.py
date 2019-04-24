@@ -10,7 +10,7 @@ from django.views.generic import (ListView,
 	DeleteView
 	)
 
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404,render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
@@ -25,6 +25,10 @@ class LibrarianSignUpView(CreateView):
     def get_context_data(self, **kwargs):
         kwargs['user_type'] = 'librarian'
         return super().get_context_data(**kwargs)
+    def form_valid(self, form):
+    	user = form.save()
+    	login(self.request, user)
+    	return render(request, 'pinkcard/home.html')   
 
 def Home(request):
 	return render(request, 'pinkcard/home.html')
@@ -44,7 +48,7 @@ class DegProgListView(ListView):
 
 class DegProgStudentList(ListView):
 	template_name = 'pinkcard/librarian/list_students.html'
-	model = DegreeProg
+	model = Student
 	context_object_name = 'students'
 	
 	
@@ -53,7 +57,7 @@ class DegProgStudentList(ListView):
 		return Student.objects.filter( degree_prog = self.degree_prog)
 
 class StudentDetailView(DetailView):
-	model = Student
+	queryset = Student
 
 def DisplayElecUsage(request):
 

@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('pinkcard.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/signup',pinkcard.SignUpView.as_view(),name='signup'),
+    path('accounts/signup/form',pinkcard.SignUpView,name='signup'),
     path('accounts/signup/student', students.StudentSignUpView.as_view(), name='student_signup'),
     path('accounts/signup/librarian', librarian.LibrarianSignUpView.as_view(), name='librarian_signup'),
 ]

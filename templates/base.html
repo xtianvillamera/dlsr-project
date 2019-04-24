@@ -18,6 +18,8 @@
 		<title></title>
 	</head>
 	<body>
+		
+		{% if user.is_authenticated and user.is_student %}
 		<!-- Responsive navbar -->
 		<div>
 		<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -34,12 +36,39 @@
 			<div class="menu-container">
 			    <ul class="nav navbar-nav">
 			    	<li><a id="navbar-brand" href="#"><img src="/static/img/you.png" id="you" width="73" height="73"></a></li>
-			    	<li><a id="navbar-brand" href="#"><img src="/static/img/map.png" id="map" width="100" height="70"></a></li>
+			    	<li><a id="navbar-brand" href="{% url 'students:map' %}"><img src="/static/img/map.png" id="map" width="100" height="70"></a></li>
 			    	<li><a id="navbar-brand" href="#"><img src="/static/img/pinkcard.png" id="pinkcard" width="105" height="70"></a></li>
 			    </ul>	
 			</div>
 		</nav>
 		</div>
+		{% endif %}
+
+		{% if user.is_authenticated and user.is_librarian %}
+		<!-- Responsive navbar -->
+		<div>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+		  	<!--<div class="collapse navbar-collapse" id="navbarCollapse"> 
+		  	</div>-->
+		  	<div class="navbar-header">
+		  		<a class="navbar-brand" href="#">DLSR</a>
+		  		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			    	<span class="sr-only">Toggle navigation</span>
+			      	<span class="icon-bar"></span>
+			      	<span class="icon-bar"></span>
+			      	<span class="icon-bar"></span>
+			    </button>	
+			</div>
+			<div class="navbar-collapse collapse">
+			    <ul class="nav navbar-nav">
+			      <li><a href="#">Home</a></li>
+			      <li><a href="{% url 'librarian:ViewingDegProgList' %}">Students</a></li>
+			      <li><a href="#">Electric Usage</a></li>
+			    </ul>	
+			</div>
+		</nav>
+		</div>
+		{% endif %}
 		
 		<br>
 		<br>
