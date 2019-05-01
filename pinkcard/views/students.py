@@ -46,7 +46,7 @@ from django.db.models import Count
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404,redirect, render
 import decimal 
 import time
 from ..models import *
@@ -78,10 +78,21 @@ class StudentSignUpView(CreateView):
 		login(self.request, user)
 		return render(request, 'pinkcard/home.html')
 
+def StudentsDetailView(request):
+	student_user = request.user.student
+	context = {'last_name':student_user.last_name, 'first_name':student_user.first_name,
+				'student_no':student_user.id_no,'degree_prog':student_user.degree_prog, 
+				'rem_hours':student_user.rem_hours,'total_elec_usage':student_user.total_elec_usage}
+	return render(request, 'pinkcard/students/students_detail.html', context)
+
+"""
 class StudentsDetailView(DetailView):
 	template_name = 'pinkcard/students/students_detail.html'
 	model = Student
 	context_object_name = 'students'
+	print(user.student.last_name)
+
+"""
 
 """
 Method Name: test
@@ -92,7 +103,8 @@ List of files/database tables: none
 Return value: It will return a blank webpage (temporarily)
 """
 def Test(request):
-	return render(request, 'pinkcard/students/map.html')
+	print(request.user.student.last_name)
+	return render(request, 'pinkcard/home.html')
 
 """
 Method Name: Map

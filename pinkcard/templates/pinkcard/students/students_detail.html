@@ -44,23 +44,23 @@ Purpose of the file: Same file and code from the file in which a librarian tries
 	<div class="row text-left	row-no-gutters">
 		<div class="row-sm-2">
 			<h3 class="stud-detail">Name:</h3> 
-			<p class="stud-detail">{{ object.last_name }}, {{ object.first_name }}</p>
+			<p class="stud-detail">{{ last_name }}, {{ first_name }}</p>
 		</div>
 		<div class="row-sm-2">
 			<h3 class="stud-detail">Student Number:</h3>
-			<p class="stud-detail">{{ object.student_no }}</p>
+			<p class="stud-detail">{{ student_no }}</p>
 		</div>
 		<div class="row-sm-3">
 			<h3 class="stud-detail">Degree Program:</h3> 
-			<p class="stud-detail">{{ object.degree_prog }}</p>
+			<p class="stud-detail">{{ degree_prog }}</p>
 		</div>
 		<div class="row-sm-4">
 			<h3 class="stud-detail">Remaining Hours:</h3>
-			<p class="stud-detail">{{ object.rem_hours}}</p>
+			<p class="stud-detail">{{ rem_hours}}</p>
 		</div>
 		<div class="row-sm-5">
 			<h3 class="stud-detail">Electric Usage: </h3>
-			<p class="stud-detail">You already used: {{ object.total_elec_usage }} minutes in total</p>
+			<p class="stud-detail">You already used: {{ total_elec_usage }} minutes in total</p>
 		</div>	
 	</div>
 {% endblock content %}

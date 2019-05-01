@@ -14,7 +14,7 @@ urlpatterns = [
     path('students/', include(([
         path('', students.Test, name='test'),
         path('map/',students.Map, name='map'),
-        #path('you/', students.StudentsDetailView.as_view(), name='detail'),
+        path('you/', students.StudentsDetailView, name='detail'),
         path('map/use',students.UseMap, name='usemap'),
         path('map/afteruse', students.AfterUseMap, name='afterusemap'),
         path('transfer/', students.Transfer, name='transfer'),
