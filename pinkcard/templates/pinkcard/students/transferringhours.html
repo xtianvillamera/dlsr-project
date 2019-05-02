@@ -51,5 +51,7 @@ Purpose of the file: This shows the form (specific form for input of hours) for 
 		<input type="number" name="hours" placeholder="Hours">
 	</form>	
 
-	{{ hours }}
+	You have transferred: <t>{{ hours }} hour(s)
+	<br>
+	<a href="{% url 'students:transferhours' %}">Back</a>
 {% endblock content %}

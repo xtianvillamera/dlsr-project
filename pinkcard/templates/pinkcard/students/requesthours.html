@@ -46,13 +46,16 @@ Purpose of the file: This shows the form for a student to send a request for hou
 	
 
 	<h2>Request Hours</h2>
-	<form method="GET" action='/students/transfer/transferhours/' href="{ url 'students:transferringhours' }">
+	<form method="GET" action='/students/transfer/requesthours/' href="{ url 'students:requestinghours' }">
 		<input type="text" name="student" placeholder="Student no.">
 	</form>
-	<form method="GET" action='/students/transfer/requesthours/' href="{ url 'students:transferringhours' }">
-		<input type="text" name="number" placeholder="Number">
-	</form>
 
-	{{text}}
+	<br>
+	{{first_name}} {{last_name}} {{degree_prog}}
+
+	<br>
+	{{continue}}
+	<a href="{% url 'students:requestinghours' %}">Continue</a>
+
 
 {% endblock content %}

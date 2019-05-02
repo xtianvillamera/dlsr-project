@@ -21,6 +21,7 @@ urlpatterns = [
         path('transfer/transferhours/', students.TransferHours, name='transferhours'),
         path('transfer/transferringhours/', students.TransferringHours, name='transferringhours'),
         path('transfer/requesthours/', students.RequestHours, name='requesthours'),
+        path('transfer/requestinghours/',students.RequestingHours, name='requestinghours'),
     ], 'pinkcard'), namespace='students')),
 
 	path('librarian/', include(([

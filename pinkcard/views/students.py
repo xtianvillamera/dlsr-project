@@ -92,12 +92,9 @@ class StudentSignUpView(CreateView):
 	def get_context_data(self, **kwargs):
 		kwargs['user_type'] = 'student'
 		return super().get_context_data(**kwargs)
+	
 	def form_valid(self, form):
-		#self.object.timein = self.request.POST.get("timein","")
 		user = form.save()
-		user.refresh_from_db()
-		user.student.last_name = form.cleaned_data.get('last_name')
-		user.save()
 		login(self.request, user)
 		return render(self.request, 'pinkcard/home.html')
 
@@ -206,11 +203,13 @@ def TransferHours(request):
 	if query is not None:
 		qs = qs.filter(id_no=query)
 		context= {'first_name':qs[0].first_name, 'last_name':qs[0].last_name, 'degree_prog':qs[0].degree_prog, 'continue':"Continue?"}
-		id_num = qs[0].id_no
+		request.session['id_num'] = qs[0].id_no
 		
-		print(id_num)
+		#print(id_num)
 	else:
 		context= {'first_name':"", 'last_name':"", 'degree_prog':"", 'continue':""}
+		#print('wala students')
+		
 	template = 'pinkcard/students/transferhours.html'
 	return render(request, template, context)
 
@@ -227,15 +226,16 @@ def TransferringHours(request):
 	if t_hours is not None:
 		print('HELLOOO')
 		id_num=16
+		print(request.session['id_num'])
 		context= {'hours':""}
 		if(request.user.student.rem_hours -  decimal.Decimal(t_hours) >= 0):
 			request.user.student.rem_hours = request.user.student.rem_hours -  decimal.Decimal(t_hours)
 			request.user.student.save()
 
-			r_hours = Student.objects.filter(id_no=id_num)[0].rem_hours
+			r_hours = Student.objects.filter(id_no=request.session['id_num'])[0].rem_hours
 			print(r_hours+decimal.Decimal(t_hours))
 
-			Student.objects.filter(id_no=id_num).update(rem_hours=r_hours+decimal.Decimal(t_hours))
+			Student.objects.filter(id_no=request.session['id_num']).update(rem_hours=r_hours+decimal.Decimal(t_hours))
 			context= {'hours':t_hours}
 
 	else:
@@ -252,10 +252,24 @@ List of files/database tables: Student
 Return Value: A webpage displaying the map of outlets.
 """
 def RequestHours(request):
-	t_hours = request.GET.get('number')
-	if t_hours is not None:
-		context = {'text':"You have requested 8 hours from Sherri Vermouth"}
+	query = request.GET.get('student', None)
+	qs = Student.objects.all()
+	if query is not None:
+		qs = qs.filter(id_no=query)
+		context= {'first_name':qs[0].first_name, 'last_name':qs[0].last_name, 'degree_prog':qs[0].degree_prog, 'continue':"Continue?"}
+		request.session['id_num'] = qs[0].id_no
+		
+		#print(id_num)
 	else:
-		context = {'text':""}
+		context= {'first_name':"", 'last_name':"", 'degree_prog':"", 'continue':""}
+		#print('wala students')
+		
 	template = 'pinkcard/students/requesthours.html'
-	return render(request, template,context)	
+	return render(request, template, context)
+
+		
+def RequestingHours(request):
+	t_hours = request.GET.get('hours')
+
+	template = 'pinkcard/students/requestinghours.html'
+	return render(request, template)

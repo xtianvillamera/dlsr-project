@@ -10,7 +10,13 @@
 				{% csrf_token %}
 				<input type="hidden" name="next" value="{{ next }}">
 				{{ form|crispy }}
-				<button type="submit" class="btn btn-success">Sign up</button>
+				{% if user_type == librarian %}
+					<button type="submit" class="btn btn-success">Sign up</button>
+				{% elif user.is_student %}
+					<button type="submit" class="btn btn-success">Request</button>
+				{% else %}
+					<button type="submit" class="btn btn-success">Request</button>											
+				{% endif %}	
 			</form>	
 		</div>	
 	</div>			

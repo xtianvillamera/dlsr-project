@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+	<br>
+	<br>	
+	<br>
+	<br>
+	<br>
+	<br>
+	
+	<h2>Request Hours</h2>
+	
+
+	<form method="GET" action='/students/transfer/requestinghours/'>
+		<input type="number" name="hours" placeholder="Hours">
+	</form>	
+
+	You have requested: <t>{{ hours }} hour(s)
+	<br>
+	<a href="{% url 'students:requesthours' %}">Back</a>
+{% endblock content %}
