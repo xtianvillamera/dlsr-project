@@ -24,7 +24,7 @@ class DegreeProg(models.Model):
 
 class Student(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-	id_no = models.IntegerField(null=False)
+	id_no = models.IntegerField(null=True)
 	last_name = models.CharField(max_length = 30, default="Doe")
 	first_name = models.CharField(max_length = 30, default="Jane")
 	degree_prog = models.ForeignKey(DegreeProg, null=True, blank=True,on_delete=models.CASCADE)

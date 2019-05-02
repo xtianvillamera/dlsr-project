@@ -65,18 +65,42 @@ List of files/database tables: Student
 Return Value: Webpage (generic view) containing the info/details of 
 an engineering student
 """
+
+"""
+
+def StudentSignUp(request):
+	if request.method == 'POST':
+		form = StudentSignUpForm(request.POST)
+		if form.is_valid():
+			form.save()
+			username = form.cleaned_data.get('username')
+			raw_password = form.cleaned_data.get('password1')
+			user = authenticate(username=username, password=raw_password)
+			login(request,user)
+			return render(request, 'pinkcard/home.html')
+		else:
+			form = StudentSignUpForm()
+	return render(request, 'registration/signup_form.html')		
+
+"""
 class StudentSignUpView(CreateView):
 	model = User
 	form_class = StudentSignUpForm
 	template_name = 'registration/signup_form.html'
 
+
 	def get_context_data(self, **kwargs):
 		kwargs['user_type'] = 'student'
 		return super().get_context_data(**kwargs)
 	def form_valid(self, form):
+		#self.object.timein = self.request.POST.get("timein","")
 		user = form.save()
+		user.refresh_from_db()
+		user.student.last_name = form.cleaned_data.get('last_name')
+		user.save()
 		login(self.request, user)
-		return render(request, 'pinkcard/home.html')
+		return render(self.request, 'pinkcard/home.html')
+
 
 def StudentsDetailView(request):
 	student_user = request.user.student
@@ -103,7 +127,7 @@ List of files/database tables: none
 Return value: It will return a blank webpage (temporarily)
 """
 def Test(request):
-	print(request.user.student.last_name)
+	#print(request.user.student.last_name)
 	return render(request, 'pinkcard/home.html')
 
 """

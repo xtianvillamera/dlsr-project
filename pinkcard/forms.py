@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django.forms.utils import ValidationError
+from django.contrib.auth.models import User
 
 from pinkcard.models import *
 
@@ -28,6 +29,7 @@ class StudentSignUpForm(UserCreationForm):
 	)
 	class Meta(UserCreationForm.Meta):
 		model = User
+		fields = ('username','id_no', 'last_name', 'first_name', 'degree_prog', )
 			
 	@transaction.atomic
 	def save(self):

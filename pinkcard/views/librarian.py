@@ -28,7 +28,7 @@ class LibrarianSignUpView(CreateView):
     def form_valid(self, form):
     	user = form.save()
     	login(self.request, user)
-    	return render(request, 'pinkcard/home.html')   
+    	return render(self.request, 'pinkcard/home.html')   
 
 def Home(request):
 	return render(request, 'pinkcard/home.html')
@@ -51,13 +51,13 @@ class DegProgStudentList(ListView):
 	model = Student
 	context_object_name = 'students'
 	
-	
 	def get_queryset(self):
 		self.degree_prog = get_object_or_404(DegreeProg, pk=self.kwargs['pk'])
 		return Student.objects.filter( degree_prog = self.degree_prog)
 
 class StudentDetailView(DetailView):
-	queryset = Student
+	model = Student
+
 
 def DisplayElecUsage(request):
 
