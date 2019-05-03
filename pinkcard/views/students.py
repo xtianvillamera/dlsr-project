@@ -269,7 +269,20 @@ def RequestHours(request):
 
 		
 def RequestingHours(request):
-	t_hours = request.GET.get('hours')
-
+	r_hours = request.GET.get('hours')
+	if r_hours is not None:
+		context= {'hours':r_hours}
+		r_m = str(request.user.student.first_name) + " " + str(request.user.student.last_name) + " requested " + str(r_hours) + " hours to you."
+		RequestMessage.objects.create(sender=request.user, recipient=Student.objects.filter(id_no=request.session['id_num'])[0].user, request_message=r_m)
+	else:
+		context = {'hours':''}
 	template = 'pinkcard/students/requestinghours.html'
-	return render(request, template)
+	return render(request, template, context)
+
+def RequestMessages(request):
+	template = 'pinkcard/students/requestmessages.html'
+	context = {}
+	context['messages'] = RequestMessage.objects.filter(recipient = request.user)
+	print(context['messages'])
+
+	return render(request, template, context)

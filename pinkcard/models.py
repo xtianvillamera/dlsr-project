@@ -31,5 +31,15 @@ class Student(models.Model):
 	rem_hours = models.DecimalField(decimal_places=2,max_digits=1000,default=20.0)
 	total_elec_usage = models.DecimalField(decimal_places=2,max_digits=1000,default=0)
 	
+	
 	def __str__(self):
 		return self.last_name
+
+class RequestMessage(models.Model):
+	sender = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='sender_notification')
+	recipient = models.ForeignKey(User, on_delete=models.CASCADE, related_name='recipient_notification')
+	request_message = models.TextField()
+	sent_date = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return self.request_message		

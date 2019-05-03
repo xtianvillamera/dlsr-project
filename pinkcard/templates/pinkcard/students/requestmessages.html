@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+	<br>
+	<br>	
+	<br>
+	<br>
+	<br>
+	<br>
+	
+	<h2>Request Messages</h2>
+	{% for rm in messages %}
+		{{rm.request_message}}
+		<br>
+		Request date: {{rm.sent_date}}
+		<br>
+		<br>
+	{% endfor %}
+
+	<br>
+	<a href="{% url 'students:transfer' %}">Back</a>
+{% endblock content %}

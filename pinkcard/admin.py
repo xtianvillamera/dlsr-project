@@ -7,3 +7,4 @@ from pinkcard.models import *
 
 admin.site.register(Student)
 admin.site.register(DegreeProg)
+admin.site.register(RequestMessage)
