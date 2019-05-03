@@ -50,12 +50,17 @@ Purpose of the file: This shows the form for a student to send a request for hou
 		<input type="text" name="student" placeholder="Student no.">
 	</form>
 
+	{% if first_name != "" %}
+	<br>
+	<h1>
+	You have searched for:
 	<br>
 	{{first_name}} {{last_name}} {{degree_prog}}
 
 	<br>
 	{{continue}}
 	<a href="{% url 'students:requestinghours' %}">Continue</a>
-
+	</h1>
+	{% endif %}
 
 {% endblock content %}
